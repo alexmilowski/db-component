@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<article xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    version="5.0">
+    <title>Test Article</title>
+   <section>
+      <title>Core Constructs</title>
+      <para>We can have paragraphs of text but we already had that.  Without an additional CSS, we
+         can get ordered and itemized lists to work as well as titles, figures, etc.  That gives the
+         browser a default to work with and the reader a basic fallback.</para>
+      <para>The user can then put into the document their own customizations of the layout just as
+         they regularly would do.  The do this through the regular method of putting an HTML
+            <code>link</code> element within the header.</para>
+      <section>
+         <title>Supported Elements</title>
+         <para>Here is a list of elements that are supported:</para>
+         <itemizedlist>
+            <listitem>
+               <para>article</para>
+            </listitem>
+            <listitem>
+               <para>code</para>
+            </listitem>
+            <listitem>
+               <para>figure</para>
+            </listitem>
+            <listitem>
+               <para>itemizedlist</para>
+            </listitem>
+            <listitem>
+               <para>listitem</para>
+            </listitem>
+            <listitem>
+               <para>programlisting</para>
+            </listitem>
+            <listitem>
+               <para>title</para>
+            </listitem>
+            <listitem>
+               <para>xref (Example: <xref linkend="pan-ex"/>)</para>
+            </listitem>
+         </itemizedlist>
+      </section>
+      <section>
+         <title>Known Issues</title>
+         <para>Of what has been attempted, none.  Of course, I haven't gotten that many elements working.</para>
+      </section>
+   </section>
+   <section>
+      <title>Examples</title>
+      <section>
+         <title>Common Constructs</title>
+         <para>A program listing:</para>
+         <programlisting>// Oh, here is some code, I hope it doesn't corrode ...
+while (true) {}</programlisting>
+      </section>
+      <section>
+         <title>Some Mathematics</title>
+         <para>The Quadradic Formula: <equation><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mrow>
+               <mi>x</mi>
+               <mo>=</mo>
+               <mfrac>
+                  <mrow>
+                     <mo>&#x2212;</mo>
+                     <mi>b</mi>
+                     <mo>&#xB1;</mo>
+                     <msqrt>
+                        <mrow>
+                           <msup>
+                              <mi>b</mi>
+                              <mn>2</mn>
+                           </msup>
+                           <mo>&#x2212;</mo>
+                           <mn>4</mn>
+                           <mi>a</mi>
+                           <mi>c</mi>
+                        </mrow>
+                     </msqrt>
+                  </mrow>
+                  <mrow>
+                     <mn>2</mn>
+                     <mi>a</mi>
+                  </mrow>
+               </mfrac>
+            </mrow>
+         </math></equation></para>
+         <para>Double Angle Formula for Cosines: <equation><math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mrow>
+               <mi>cos</mi>
+               <mo>&#x2061;</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>&#x3B8;</mi>
+                  <mo>+</mo>
+                  <mi>&#x3C6;</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mo>=</mo>
+               <mi>cos</mi>
+               <mo>&#x2061;</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>&#x3B8;</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mi>cos</mi>
+               <mo>&#x2061;</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>&#x3C6;</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mo>&#x2212;</mo>
+               <mi>sin</mi>
+               <mo>&#x2061;</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>&#x3B8;</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mi>sin</mi>
+               <mo>&#x2061;</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>&#x3C6;</mi>
+                  <mo>)</mo>
+               </mrow>
+            </mrow>
+         </math></equation></para>
+      </section>
+      <section>
+         <title>Some SVG Figures</title>
+         <para>In <xref linkend="pan-ex"/> you should see the image loaded and notice how the title has been repositioned to the bottom.  There is some support for selecting elements and repositioning content within HTML templates.</para>
+         <figure xml:id="pan-ex">
+            <title>PAN Partitioning</title>
+            <mediaobject>
+               <imageobject>
+                  <imagedata fileref="pan-method.svg"/>
+               </imageobject>
+            </mediaobject>
+         </figure>
+      </section>
+   </section>
+</article>

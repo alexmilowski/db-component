@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="dist" name="Docbook Component Example Web Build">
+   <target name="dist">
+      <mkdir dir="docs"/>
+      <copy file="../db-component.xhtml" todir="docs"/>
+      <copy file="../db-component.js" todir="docs"/>
+      <copy file="../db-component.css" todir="docs"/>
+      <copy file="../examples/article.xhtml" todir="docs"/>
+      <copy file="../examples/pan-method.svg" todir="docs"/>
+   </target>
+   <target name="clean">
+      <delete dir="docs"/>
+   </target>
+</project>

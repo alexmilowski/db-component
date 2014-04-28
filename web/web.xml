@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component xmlns="http://www.atomojo.org/V/Server/2011/1/0" xmlns:xproc="http://www.atomojo.org/V/XProc/2011/1/0">
+
+   <client protocol="FILE"/>
+   <client protocol="HTTP"/>
+   <client protocol="HTTPS"/>
+   
+   <server protocol="HTTP" address="*" port="8080">
+      <host name="localhost">
+         <content match="/" href="docs/">
+            <parameter name="method" value="GET"/>
+            <parameter name="method" value="HEAD"/>
+         </content>
+      </host>
+   </server>
+   
+</component>
