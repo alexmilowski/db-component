@@ -45,6 +45,12 @@
          <title>Known Issues</title>
          <para>Of what has been attempted, none.  Of course, I haven't gotten that many elements working.</para>
       </section>
+      <section>
+         <title>Getting the Code</title>
+         <para>The code and examples are available in the <link
+               xlink:href="https://github.com/alexmilowski/db-component">db-component</link>
+            project.</para>
+      </section>
    </section>
    <section>
       <title>Examples</title>

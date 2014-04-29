@@ -22,9 +22,9 @@ function makePrototype(prototype,id) {
 document.registerElement("db-code", {prototype: makePrototype(HTMLSpanElement.prototype,"db-code") });
 document.registerElement("db-para",{prototype: Object.create(HTMLParagraphElement.prototype)});
 document.registerElement("db-orderedlist",{prototype: Object.create(HTMLOListElement.prototype)});
-document.registerElement("db-itemizedlist",{prototype: makePrototype(HTMLSpanElement.prototype,"db-itemizedlist")});
-document.registerElement("db-listitem",{prototype: makePrototype(HTMLSpanElement.prototype,"db-listitem")});
-document.registerElement("db-figure",{prototype: makePrototype(HTMLSpanElement.prototype,"db-figure")});
+document.registerElement("db-itemizedlist",{prototype: makePrototype(HTMLDivElement.prototype,"db-itemizedlist")});
+document.registerElement("db-listitem",{prototype: makePrototype(HTMLDivElement.prototype,"db-listitem")});
+document.registerElement("db-figure",{prototype: makePrototype(HTMLDivElement.prototype,"db-figure")});
 
 function levelCount(target,level) {
    var count = 0;
@@ -119,6 +119,24 @@ var dbXRefObject = Object.create(HTMLSpanElement.prototype, {
    }
 });
 document.registerElement("db-xref", {prototype: dbXRefObject});
+
+var dbLinkObject = Object.create(HTMLSpanElement.prototype, {
+   createdCallback: {
+      value: function() {
+         var root = this.createShadowRoot();
+         var t = componentDocument.getElementById("db-link");
+         var clone = document.importNode(t.content, true);
+         root.appendChild(clone);
+         var a = root.getElementsByTagName("a")[0];
+         a.setAttribute("href",this.getAttribute("href"));
+         this.addEventListener("click",function() {
+            window.location = this.getAttribute("href");
+            return true;
+         },false);
+      }
+   }
+});
+document.registerElement("db-link", {prototype: dbLinkObject});
 
 var dbProgramListingObject = Object.create(HTMLPreElement.prototype, {
    createdCallback: {
