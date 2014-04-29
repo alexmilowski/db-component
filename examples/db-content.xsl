@@ -9,7 +9,7 @@
    
 <xsl:template match="/db:*">
    <xsl:element name="db-{local-name()}" namespace="http://www.w3.org/1999/xhtml">
-      <xsl:attribute name="typeof">http://docbook.org/ns/docbook</xsl:attribute>
+      <xsl:attribute name="typeof"><xsl:value-of select="namespace-uri()"/></xsl:attribute>
       <xsl:apply-templates select="@*|node()"/>
    </xsl:element>
 </xsl:template>
