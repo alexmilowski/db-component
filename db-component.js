@@ -5,7 +5,7 @@ mathJax.setAttribute("src","http://cdn.mathjax.org/mathjax/latest/MathJax.js?con
 mathJax.setAttribute("type","text/javascript");
 document.head.appendChild(mathJax);
 
-var componentDocument = document.currentScript.ownerDocument;
+var componentDocument = document._currentScript ? document._currentScript.ownerDocument : document.currentScript.ownerDocument;
 function makeCreator(templateId) {
    return function() {
       var t = componentDocument.getElementById(templateId);
@@ -87,7 +87,7 @@ var dbMediaObject = Object.create(HTMLElement.prototype, {
          root.appendChild(clone);
          var images = this.getElementsByTagName("db-imagedata");
          for (var i=0; i<images.length; i++) {
-            var img = document.createElement("img");
+            var img = root.ownerDocument.createElement("img");
             img.src = images[i].getAttribute("fileref");
             root.appendChild(img);
          }
@@ -141,7 +141,9 @@ document.registerElement("db-link", {prototype: dbLinkObject});
 var dbProgramListingObject = Object.create(HTMLPreElement.prototype, {
    createdCallback: {
       value: function() {
-         hljs.highlightBlock(this);
+         if (typeof hljs != "undefined") {
+            hljs.highlightBlock(this);
+         }
       }
    }
 });
@@ -153,6 +155,7 @@ var dbArticle = Object.create(HTMLDivElement.prototype, {
          var t = componentDocument.getElementById("db-article");
          var root = this.createShadowRoot();
          var clone = document.importNode(t.content, true);
+         // TODO: This append fails in firefox
          root.appendChild(clone);
          this.update();
       }
@@ -230,7 +233,6 @@ dbArticle.update = function() {
 }
 
 document.registerElement("db-article", {prototype: dbArticle });
-
 
 })();
 

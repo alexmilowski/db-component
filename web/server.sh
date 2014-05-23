@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -Dfile.encoding=UTF-8  -jar ~/workspace/code.google.com/atomojo/v2/server/dist/atomojo-v2-server.jar web.xml
+java -Dfile.encoding=UTF-8  -jar ~/workspace/github/xproclet/server/dist/xproclet-1.0.m1/xproclet-server.jar web.xml

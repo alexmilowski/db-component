@@ -4,9 +4,14 @@
       <mkdir dir="docs"/>
       <copy file="../db-component.xhtml" todir="docs"/>
       <copy file="../db-component.js" todir="docs"/>
+      <copy file="../platform.js" todir="docs"/>
+      <copy file="../platform.js.map" todir="docs"/>
       <copy file="../db-component.css" todir="docs"/>
       <copy file="../examples/article.xhtml" todir="docs"/>
       <copy file="../examples/pan-method.svg" todir="docs"/>
+      <copy file="../issues/style-only-template.xhtml" todir="docs"/>
+      <copy file="../issues/magic-figure-component.js" todir="docs"/>
+      <copy file="../issues/magic-figure-component.xhtml" todir="docs"/>
    </target>
    <target name="clean">
       <delete dir="docs"/>

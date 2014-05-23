@@ -4,7 +4,7 @@
    xmlns:db="http://docbook.org/ns/docbook"
    xmlns:m="http://www.w3.org/1998/Math/MathML"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   exclude-result-prefixes="xs db m"
+   exclude-result-prefixes="xs db m xlink"
    version="2.0">
    
 <xsl:template match="/db:*">
@@ -19,11 +19,16 @@
       <xsl:apply-templates select="@*|node()"/>
    </xsl:element>
 </xsl:template>
-   
+
+<!-- breaks firefox MathML rendering
 <xsl:template match="m:*">
    <xsl:element name="{local-name()}" namespace="http://www.w3.org/1999/xhtml">
       <xsl:apply-templates select="@*|node()"/>
    </xsl:element>
+</xsl:template>
+-->
+<xsl:template match="m:*">
+   <xsl:copy-of select="."/>
 </xsl:template>
    
 <xsl:template match="@xml:id">
