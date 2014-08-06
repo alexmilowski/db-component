@@ -40,7 +40,7 @@ function levelCount(target,level) {
 function divisionCount(target) {
    var numbers = [];
    var currentTop = target;
-   while (currentTop && currentTop.localName!="db-article" && currentTop.localName.indexOf("db-")==0) {
+   while (currentTop && (currentTop.localName!="db-article" && currentTop.localName!="db-book") && currentTop.localName.indexOf("db-")==0) {
       count = levelCount(currentTop);
       numbers.unshift(count);
       currentTop = currentTop.parentNode;
@@ -233,6 +233,97 @@ dbArticle.update = function() {
 }
 
 document.registerElement("db-article", {prototype: dbArticle });
+var dbBook = Object.create(HTMLDivElement.prototype, {
+   createdCallback: {
+      value: function() {
+         var t = componentDocument.getElementById("db-article");
+         var root = this.createShadowRoot();
+         var clone = document.importNode(t.content, true);
+         // TODO: This append fails in firefox
+         root.appendChild(clone);
+         this.update();
+      }
+   },
+   toc: {
+      configurable: false,
+      get: function() {
+         return this.shadowRoot.getElementById("toc");
+      }
+   },
+   listOfFigures: {
+      enumerable: true,
+      get: function() {
+         return this.shadowRoot.getElementById("list-of-figures");
+      }
+   }
+});
+dbBook.update = function() {
+   var titleSpan = this.shadowRoot.getElementById("title");
+   var toc = this.shadowRoot.getElementById("toc");
+   toc.innerHTML = "";
+   var lof = this.shadowRoot.getElementById("list-of-figures");
+   lof.innerHTML = "";
+   var titles = this.getElementsByTagName("db-title");
+   var tocValues = [];
+   var lofValues = [];
+   
+   var blank = this.ownerDocument.createElement("option");
+   blank.appendChild(this.ownerDocument.createTextNode("— Table of Contents —"));
+   blank.setAttribute("value","");
+   toc.appendChild(blank);
+   blank = this.ownerDocument.createElement("option");
+   blank.appendChild(this.ownerDocument.createTextNode("— List of Figures —"));
+   blank.setAttribute("value","");
+   lof.appendChild(blank);
+
+   for (var i=0; i<titles.length; i++) {
+      if (titles[i].parentNode.localName=="db-chapter" || (titles[i].parentNode.localName=="db-info" && titles[i].parentNode.parentNode.localName=="db-chapter")) {
+         var numbers = divisionCount(titles[i].parentNode.localName=="db-info" ? titles[i].parentNode.parentNode : titles[i].parentNode)
+         var text = numbers.join(".")+". "+titles[i].textContent;
+         var option = this.ownerDocument.createElement("option");
+         option.appendChild(this.ownerDocument.createTextNode(text));
+         option.setAttribute("value",tocValues.length.toString());
+         toc.appendChild(option);
+         tocValues.push(titles[i]);
+      } else if (titles[i].parentNode.localName=="db-section") {
+         var numbers = divisionCount(titles[i].parentNode)
+         var text = numbers.join(".")+". "+titles[i].textContent;
+         var option = this.ownerDocument.createElement("option");
+         option.appendChild(this.ownerDocument.createTextNode(text));
+         option.setAttribute("value",tocValues.length.toString());
+         toc.appendChild(option);
+         tocValues.push(titles[i]);
+      } else if (titles[i].parentNode.localName=="db-figure") {
+         var figNumber = figureNumber(titles[i].parentNode)
+         var text = figNumber+". "+titles[i].textContent;
+         var option = this.ownerDocument.createElement("option");
+         option.appendChild(this.ownerDocument.createTextNode(text));
+         option.setAttribute("value",lofValues.length.toString());
+         lof.appendChild(option);
+         lofValues.push(titles[i]);
+      } else if (titles[i].parentNode.localName=="db-book" || (titles[i].parentNode.localName=="db-info" && titles[i].parentNode.parentNode.localName=="db-book" )) {
+         titleSpan.innerHTML = titles[i].textContent;
+      }
+   }
+   toc.onchange = function() {
+      if (this.value=="") {
+         return;
+      }
+      var index = Number.parseInt(this.value);
+      tocValues[index].scrollIntoView();
+      tocValues[index].ownerDocument.defaultView.scrollBy(0,-Number.parseInt(getComputedStyle(tocValues[index]).fontSize));
+      tocUsed = false;
+   }
+   lof.onchange = function() {
+      if (this.value=="") {
+         return;
+      }
+      var index = Number.parseInt(this.value);
+      lofValues[index].scrollIntoView();
+   }
+   lof.onclick = lof.onchange;
+}
+document.registerElement("db-book", {prototype: dbBook });
 
 })();
 
