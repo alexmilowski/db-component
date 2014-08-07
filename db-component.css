@@ -75,6 +75,10 @@ db-link {
    display: inline;
 }
 
+db-para {
+   display: block;
+}
+
 db-blockquote {
    display: block;
    margin-left: 2em;
