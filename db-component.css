@@ -74,3 +74,10 @@ db-xref {
 db-link {
    display: inline;
 }
+
+db-blockquote {
+   display: block;
+   margin-left: 2em;
+   margin-right: 2em;
+   font-style: italic;
+}
