@@ -1,4 +1,4 @@
-db-article {
+db-article, db-book {
    display: block;
    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
    font-size: 1em;
@@ -73,4 +73,19 @@ db-xref {
 
 db-link {
    display: inline;
+}
+
+db-para {
+   display: block;
+   margin-top: 1em;
+   margin-bottom: 1em;
+}
+
+db-blockquote {
+   display: block;
+   margin-top: 1em;
+   margin-bottom: 1em;
+   margin-left: 2em;
+   margin-right: 2em;
+   font-style: italic;
 }
