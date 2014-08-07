@@ -1,0 +1,76 @@
+db-article, db-book {
+   display: block;
+   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+   font-size: 1em;
+   line-height: 1.825;
+   padding-top: 2em;
+   padding-left: 1em;
+   max-width: 210mm;
+}
+
+db-article > db-title {
+   font-size: 4em;
+   text-align: center;
+   margin-bottom: 1em;
+}
+
+db-title {
+   display: block;
+   font-weight: bold;
+   font-family: Helvetica, Arial, sans-serif;
+}
+
+db-article > db-section > db-title {
+   font-size: 2em;
+}
+
+db-article > db-section > db-section > db-title {
+   font-size: 1.5em;
+}
+
+db-article > db-section > db-section > db-section > db-title {
+   font-size: 1.2em;
+}
+
+db-code {
+   font-family: monospace;
+}
+
+db-itemizedlist {
+   display: block;
+   margin-left: 2em;
+   margin-top: 1em;
+}
+
+db-itemizedlist > db-listitem {
+   display: list-item;
+}
+
+db-figure {
+   display: block;
+   margin-top: 2em;
+   margin-bottom: 2em;
+}
+
+db-figure > db-title {
+   text-align: center;
+}
+
+db-programlisting {
+   display: block;
+   margin-top: 1em;
+   margin-bottom: 1em;
+   border: 1px solid rgb(200,200,200);
+   padding: 0.25em;
+   font-family: monospace;
+   white-space: pre;
+   line-height: 1;
+}
+
+db-xref {
+   display: inline;
+}
+
+db-link {
+   display: inline;
+}

@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Docbook Component</title>
+    <link rel="stylesheet" type="text/css" href="db-component.css"/>
+    <link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css"/>
+    <script type="text/javascript" src="http://yandex.st/highlightjs/8.0/highlight.min.js">//</script>
+  </head>
+  <body>
+     <template id="db-article">
+        <style type="text/css" >
+           :host article header nav {
+              position: fixed;
+              top: 0px;
+              background-color: rgb(255,255,255);
+              border-bottom: 1px solid black;
+              width: 100%;
+              margin-left: -1em;
+              z-index: 100;
+           }
+           :host article header nav .title {
+              font-weight: bold;
+              font-family: Helvetica, Arial, sans-serif;
+              margin-left: 1em;
+              vertical-align: -5%;
+           }
+        </style>
+        <article>
+           <header>
+              <nav>
+                 <select id="toc"></select>
+                 <select id="list-of-figures"></select>
+                 <span id="title" class="title"></span>
+              </nav>
+           </header>
+           <content></content>
+        </article>
+     </template>
+     <template id="db-title">
+        <p><span class="number"></span><content></content></p>
+     </template>
+     <template id="db-mediaobject">
+        <style type="text/css" >
+           :host img {
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+           }
+        </style>
+        <!-- TODO: If this unnecessary div is not here, Firefox crashses -->
+        <div id="db-mediaobject"></div>
+     </template>
+     <template id="db-figure">
+        <content select="db-mediaobject, db-programlisting"></content>
+        <content select="db-title"></content>
+     </template>
+     <template id="db-programlisting">
+        <pre><content></content></pre>
+     </template>
+     <template id="db-link">
+        <style type="text/css" >
+           :host a {
+              cursor: pointer;
+           }
+        </style>
+        <a><content></content></a>
+     </template>
+     <script type="text/javascript" src="db-component.js">//</script>
+  </body>
+</html>

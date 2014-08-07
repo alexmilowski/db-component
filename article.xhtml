@@ -1,0 +1,155 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+     <script type="text/javascript" src="platform.js"/>
+     <link rel="import" href="db-component.xhtml"/>
+  </head>
+  <body>
+    <db-article typeof="http://docbook.org/ns/docbook" version="5.0">
+    <db-title>Test Article</db-title>
+   <db-section>
+      <db-title>Core Constructs</db-title>
+      <db-para>We can have paragraphs of text but we already had that.  Without an additional CSS, we
+         can get ordered and itemized lists to work as well as titles, figures, etc.  That gives the
+         browser a default to work with and the reader a basic fallback.</db-para>
+      <db-para>The user can then put into the document their own customizations of the layout just as
+         they regularly would do.  The do this through the regular method of putting an HTML
+            <db-code>link</db-code> element within the header.</db-para>
+      <db-section>
+         <db-title>Supported Elements</db-title>
+         <db-para>Here is a list of elements that are supported:</db-para>
+         <db-itemizedlist>
+            <db-listitem>
+               <db-para>article</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>code</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>figure</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>itemizedlist</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>listitem</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>programlisting</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>title</db-para>
+            </db-listitem>
+            <db-listitem>
+               <db-para>xref (Example: <db-xref linkend="pan-ex"/>)</db-para>
+            </db-listitem>
+         </db-itemizedlist>
+      </db-section>
+      <db-section>
+         <db-title>Known Issues</db-title>
+         <db-para>Of what has been attempted, none.  Of course, I haven't gotten that many elements working.</db-para>
+      </db-section>
+      <db-section>
+         <db-title>Getting the Code</db-title>
+         <db-para>The code and examples are available in the <db-link href="https://github.com/alexmilowski/db-component">db-component</db-link>
+            project.</db-para>
+      </db-section>
+   </db-section>
+   <db-section>
+      <db-title>Examples</db-title>
+      <db-section>
+         <db-title>Common Constructs</db-title>
+         <db-para>A program listing:</db-para>
+         <db-programlisting>// Oh, here is some code, I hope it doesn't corrode ...
+while (true) {}</db-programlisting>
+      </db-section>
+      <db-section>
+         <db-title>Some Mathematics</db-title>
+         <db-para>The Quadradic Formula: <db-equation><math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" display="block">
+            <mrow>
+               <mi>x</mi>
+               <mo>=</mo>
+               <mfrac>
+                  <mrow>
+                     <mo>−</mo>
+                     <mi>b</mi>
+                     <mo>±</mo>
+                     <msqrt>
+                        <mrow>
+                           <msup>
+                              <mi>b</mi>
+                              <mn>2</mn>
+                           </msup>
+                           <mo>−</mo>
+                           <mn>4</mn>
+                           <mi>a</mi>
+                           <mi>c</mi>
+                        </mrow>
+                     </msqrt>
+                  </mrow>
+                  <mrow>
+                     <mn>2</mn>
+                     <mi>a</mi>
+                  </mrow>
+               </mfrac>
+            </mrow>
+         </math></db-equation></db-para>
+         <db-para>Double Angle Formula for Cosines: <db-equation><math xmlns="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" display="block">
+            <mrow>
+               <mi>cos</mi>
+               <mo>⁡</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>θ</mi>
+                  <mo>+</mo>
+                  <mi>φ</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mo>=</mo>
+               <mi>cos</mi>
+               <mo>⁡</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>θ</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mi>cos</mi>
+               <mo>⁡</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>φ</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mo>−</mo>
+               <mi>sin</mi>
+               <mo>⁡</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>θ</mi>
+                  <mo>)</mo>
+               </mrow>
+               <mi>sin</mi>
+               <mo>⁡</mo>
+               <mrow>
+                  <mo>(</mo>
+                  <mi>φ</mi>
+                  <mo>)</mo>
+               </mrow>
+            </mrow>
+         </math></db-equation></db-para>
+      </db-section>
+      <db-section>
+         <db-title>Some SVG Figures</db-title>
+         <db-para>In <db-xref linkend="pan-ex"/> you should see the image loaded and notice how the title has been repositioned to the bottom.  There is some support for selecting elements and repositioning content within HTML templates.</db-para>
+         <db-figure id="pan-ex">
+            <db-title>PAN Partitioning</db-title>
+            <db-mediaobject>
+               <db-imageobject>
+                  <db-imagedata fileref="pan-method.svg"/>
+               </db-imageobject>
+            </db-mediaobject>
+         </db-figure>
+      </db-section>
+   </db-section>
+</db-article>
+  </body>
+</html>
